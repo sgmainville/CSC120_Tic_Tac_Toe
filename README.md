@@ -1,2 +1,1 @@
-# lab_play
-this is a temp repo
+# CSC120_Tic_Tac_Toe
