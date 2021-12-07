@@ -7,22 +7,60 @@ Original file is located at
     https://colab.research.google.com/drive/1eD5gb-PuiH8N9ttJWnqgSw_xVzmkrHVr
 """
 
-board = [['-', '-', '-'], ['-', '-', '-'], ['-', '-', '-']] #this list contains three lists, each of three elements, each element being a single character
+board = [['-', '-', '-'], 
+        ['-', '-', '-'], 
+        ['-', '-', '-']] 
 
 def print_board():
   for r in board:
     print(r)
 
-def check_mark():
-  pass
+def check_mark(row, col):
+  if board[row][col] == '-':
+    return True
+  return False
 
-def place_mark():
-  pass
+def place_mark(row, col, player):
+  if player == 1:
+    player_char = 'X'
+  else:
+    player_char = '0'
+  board[row][col] = place_char
+  
 
-def check_win():
-  pass
+def check_win(player): 
+   if player == 1:
+     symbol = 'X'
+   elif player == 2:
+     symbol = '0'
+   else:
+     symbol = 'invalid player'
+   
+   looking_for = [symbol for i in range(3)]
+   print('checking: ', looking_for)
 
-def main():
-  pass
+   has_won = False
+   for row in range(3):
+     if looking_for == board[row]:
+       has_won = True
+     col =[board[row][i] for i in range(3)]
+     print('checking col ', col)
+     if looking_for == col:
+       has_won = True
 
-print_board()
+   diag = [board[i][i] for i in range(3)]
+   if looking_for == diag:
+     has_won = True
+   diag = [board[0][2], board[1][1], board[2][0]]
+
+
+
+
+def main(row, col, player):
+  print_board()
+  check_mark(row, col)
+  place_mark(row, col, player)
+  check_win(player)
+  
+
+main(row, col, player)
